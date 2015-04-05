@@ -11,7 +11,7 @@
   {
    "name":"mysql",
    "username":"root",
-   "password":"",
+   "password":"root",
    "type":"rdbms"
   }
 }

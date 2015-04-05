@@ -23,7 +23,7 @@ namespace :mysql_namespace do
 
     begin
       puts "Initiating connection with mysql on localhost"
-      db = Mysql2::Client.new(:host => "localhost", :username => "root",:password => "root", :database => "testdb")
+      db = Mysql2::Client.new(:host => "localhost", :username => "root",:password => "root", :database => "moviedb")
       results = db.query("SELECT * FROM EMPLOYEE")
       results.each do |row|
         puts row["SSN"] # row["id"].class == Fixnum
