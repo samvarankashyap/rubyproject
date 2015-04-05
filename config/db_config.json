@@ -1,0 +1,18 @@
+{    
+  "dbs": {
+  "db1":
+  {
+   "name":"mongodb",
+   "username":"",
+   "password":"",
+   "type":"nosql"
+  },
+  "db2":
+  {
+   "name":"mysql",
+   "username":"root",
+   "password":"",
+   "type":"rdbms"
+  }
+}
+}
