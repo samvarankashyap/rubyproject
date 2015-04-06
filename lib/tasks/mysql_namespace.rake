@@ -4,16 +4,25 @@ namespace :mysql_namespace do
   desc "TODO"
   task populate_data: :environment do
     puts "namespace : mysql_namespace, task: populate_data execution started"
-
+   
     begin
+      out_file = File.read("config/db_config.json")
+      data_hash = JSON.parse(out_file)
+      user_name = data_hash['dbs']['mysql']['username']
+      password = data_hash['dbs']['mysql']['password']
+      database = data_hash['dbs']['mysql']['database']
+      puts user_name 
+      puts password
+      puts database
+
       puts "Initiating connection with mysql on localhost"
-      con = Mysql2::Client.new(:host => "localhost", :username => "root",:password => "root", :database => "moviedb")
+      con = Mysql2::Client.new(:host => "localhost", :username => user_name ,:password => password, :database => database)
       results = con.query("CREATE TABLE IF NOT EXISTS movies(id INT PRIMARY KEY AUTO_INCREMENT ,movie_id INT , name VARCHAR(100) , original_name VARCHAR(100),first_air_date  VARCHAR(100) , poster_path  VARCHAR(100), popularity DOUBLE(20,15), vote_average DOUBLE , vote_count INT, media_type VARCHAR (10))")
       $i = 1
       $num = 600
       while $i < $num  do
         if $i%30 == 0 then 
-          sleep(25)
+          sleep(30)
         end
         s1 = "http://api.themoviedb.org/3/search/multi?query=A&page=#$i&api_key=7991962ef09715df799931ae03bec180"
         url = URI.parse(s1)
