@@ -1,6 +1,6 @@
 {    
   "dbs": {
-  "monogo":
+  "mongo":
   {
    "name":"mongodb",
    "username":"",
